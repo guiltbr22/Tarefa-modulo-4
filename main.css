@@ -1,0 +1,19 @@
+.articles article img{
+    height: 180px;
+}
+
+#sports{
+    background-color: rgb(220, 243, 14);
+}
+
+#economy{
+    background-color: rgb(241, 94, 94);
+}
+
+#games{
+    background-color: rgb(152, 252, 149);
+}
+
+#tech{
+    background-color: rgb(130, 147, 243);
+}

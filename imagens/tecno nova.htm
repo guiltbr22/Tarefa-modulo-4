@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8" /><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.4",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let r=e.getAttribute("data-rocket-src");if(r&&0!==r.indexOf("data:")){0===r.indexOf("//")&&(r=location.protocol+r);try{let i=new URL(r).origin;i!==location.origin&&t.push({src:i,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(n){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._pendingWebpackRequests(this),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){if(await this._littleBreath(),!0===t.noModule&&"noModule"in HTMLScriptElement.prototype){t.setAttribute("data-rocket-status","skipped");return}return new Promise(navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(){let t={};function e(e,r){!function e(r){!t[r]&&(t[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.remove.apply(r,arguments)});function i(e){return t[r].eventsToRewrite.indexOf(e)>=0?"rocket-"+e:e}}(e),t[e].eventsToRewrite.push(r)}function r(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}e(document,"DOMContentLoaded"),e(window,"DOMContentLoaded"),e(window,"load"),e(window,"pageshow"),e(document,"readystatechange"),r(document,"onreadystatechange"),r(window,"onload"),r(window,"onpageshow")}_delayJQueryReady(t){let e;function r(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}function i(i){if(i&&i.fn&&!t.allJQueries.includes(i)){i.fn.ready=i.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(i):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(i)),i([])};let n=i.fn.on;i.fn.on=i.fn.init.prototype.on=function(){return this[0]===window&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=r(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{let e=arguments[0][t];delete arguments[0][t],arguments[0][r(t)]=e})),n.apply(this,arguments),this},t.allJQueries.push(i)}e=i}i(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){i(t)}})}async _pendingWebpackRequests(t){let e=document.querySelector("script[data-webpack]");async function r(){return new Promise(t=>{e.addEventListener("load",t),e.addEventListener("error",t)})}e&&(await r(),await t._requestAnimFrame(),await t._pendingWebpackRequests(t))}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no">
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="https://vcx.solutions/wp-content/uploads/2021/09/vcx-favicon.png" />
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com -->
+	<!-- This site is optimized with the Yoast SEO Premium plugin v21.7 (Yoast SEO v22.1) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>O que é Tecnologia da Informação? - VC-X Solutions</title>
+	<meta name="description" content="Tecnologia da informação é o conjunto de soluções utilizadas no desenvolvimento e manutenção de computadores, sistemas e redes. Veja mais!" />
+	<link rel="canonical" href="https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="O que é Tecnologia da Informação?" />
+	<meta property="og:description" content="Tecnologia da informação é o conjunto de soluções utilizadas no desenvolvimento e manutenção de computadores, sistemas e redes. Veja mais!" />
+	<meta property="og:url" content="https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/" />
+	<meta property="og:site_name" content="VC-X Solutions" />
+	<meta property="article:published_time" content="2021-09-08T14:44:28+00:00" />
+	<meta property="article:modified_time" content="2024-02-05T18:32:21+00:00" />
+	<meta property="og:image" content="https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg" />
+	<meta property="og:image:width" content="1450" />
+	<meta property="og:image:height" content="850" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="author" content="Aline" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Escrito por" />
+	<meta name="twitter:data1" content="Aline" />
+	<meta name="twitter:label2" content="Est. tempo de leitura" />
+	<meta name="twitter:data2" content="1 minuto" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/#article","isPartOf":{"@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/"},"author":{"name":"Aline","@id":"https://vcx.solutions/#/schema/person/7df6f24cd0501f485d6da7a3342decee"},"headline":"O que é Tecnologia da Informação?","datePublished":"2021-09-08T14:44:28+00:00","dateModified":"2024-02-05T18:32:21+00:00","mainEntityOfPage":{"@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/"},"wordCount":1620,"publisher":{"@id":"https://vcx.solutions/#organization"},"image":{"@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/#primaryimage"},"thumbnailUrl":"https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg","keywords":["Conceitos TI"],"articleSection":["Gestão TI"],"inLanguage":"pt-BR"},{"@type":"WebPage","@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/","url":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/","name":"O que é Tecnologia da Informação? - VC-X Solutions","isPartOf":{"@id":"https://vcx.solutions/#website"},"primaryImageOfPage":{"@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/#primaryimage"},"image":{"@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/#primaryimage"},"thumbnailUrl":"https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg","datePublished":"2021-09-08T14:44:28+00:00","dateModified":"2024-02-05T18:32:21+00:00","description":"Tecnologia da informação é o conjunto de soluções utilizadas no desenvolvimento e manutenção de computadores, sistemas e redes. Veja mais!","breadcrumb":{"@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/"]}]},{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/#primaryimage","url":"https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg","contentUrl":"https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg","width":1450,"height":850},{"@type":"BreadcrumbList","@id":"https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vcx.solutions/"},{"@type":"ListItem","position":2,"name":"O que é Tecnologia da Informação?"}]},{"@type":"WebSite","@id":"https://vcx.solutions/#website","url":"https://vcx.solutions/","name":"VC-X Solutions","description":"Descomplique a Gestão e Aquisição de Telecom e TI da﻿ sua empresa com custo zero!","publisher":{"@id":"https://vcx.solutions/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://vcx.solutions/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"pt-BR"},{"@type":"Organization","@id":"https://vcx.solutions/#organization","name":"VC-X Solutions","url":"https://vcx.solutions/","logo":{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https://vcx.solutions/#/schema/logo/image/","url":"https://vcx.solutions/wp-content/uploads/2021/08/vc-x-logo-header.svg","contentUrl":"https://vcx.solutions/wp-content/uploads/2021/08/vc-x-logo-header.svg","width":106,"height":40,"caption":"VC-X Solutions"},"image":{"@id":"https://vcx.solutions/#/schema/logo/image/"}},{"@type":"Person","@id":"https://vcx.solutions/#/schema/person/7df6f24cd0501f485d6da7a3342decee","name":"Aline"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//static.addtoany.com' />
+<link rel='dns-prefetch' href='//code.jquery.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//connect.facebook.net' />
+<link rel='dns-prefetch' href='//d335luupugsy2.cloudfront.net' />
+<link rel='dns-prefetch' href='//popups.rdstation.com.br' />
+<link rel='dns-prefetch' href='//script.hotjar.com' />
+<link rel='dns-prefetch' href='//snap.licdn.com' />
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//www.gstatic.com' />
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/vcx.solutions\/wp-includes\/js\/wp-emoji-release.min.js"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://vcx.solutions/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='activecampaign-form-block-css' href='https://vcx.solutions/wp-content/plugins/activecampaign-subscription-forms/activecampaign-form-block/build/style-index.css?ver=1707055758' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='ivory-search-styles-css' href='https://vcx.solutions/wp-content/plugins/add-search-to-menu/public/css/ivory-search.min.css?ver=5.5.4' type='text/css' media='all' />
+<link rel='stylesheet' id='nsc_bar_nice-cookie-consent-css' href='https://vcx.solutions/wp-content/plugins/beautiful-and-responsive-cookie-consent/public/cookieNSCconsent.min.css?ver=3.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css' href='https://vcx.solutions/wp-content/themes/vcx/css/jquery.fancybox.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-css' href='https://vcx.solutions/wp-content/themes/vcx/css/slick.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='font-roboto-css' href='//fonts.googleapis.com/css2?family=Roboto%3Awght%40300%3B400%3B500%3B700%3B900&#038;display=swap&#038;ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css' href='https://vcx.solutions/wp-content/themes/vcx/style.css?ver=0.502' type='text/css' media='all' />
+<link rel='stylesheet' id='addtoany-css' href='https://vcx.solutions/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.16' type='text/css' media='all' />
+<style id='rocket-lazyload-inline-css' type='text/css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://vcx.solutions/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+</style>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="addtoany-core-js-before">
+/* <![CDATA[ */
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};a2a_localize = {
+	Share: "Compartilhar",
+	Save: "Salvar",
+	Subscribe: "Inscrever",
+	Email: "Email",
+	Bookmark: "Favoritos",
+	ShowAll: "Mostrar tudo",
+	ShowLess: "Mostrar menos",
+	FindServices: "Procurar serviço(s)",
+	FindAnyServiceToAddTo: "Encontrar rapidamente qualquer serviço para",
+	PoweredBy: "Serviço fornecido por",
+	ShareViaEmail: "Share via email",
+	SubscribeViaEmail: "Subscribe via email",
+	BookmarkInYourBrowser: "Adicionar aos favoritos",
+	BookmarkInstructions: "Press Ctrl+D or \u2318+D to bookmark this page",
+	AddToYourFavorites: "Adicionar a favoritos",
+	SendFromWebOrProgram: "Send from any email address or email program",
+	EmailProgram: "Email program",
+	More: "More&#8230;",
+	ThanksForSharing: "Thanks for sharing!",
+	ThanksForFollowing: "Thanks for following!"
+};
+
+a2a_config.icon_color="#4253a0";
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async data-rocket-src="https://static.addtoany.com/menu/page.js" id="addtoany-core-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="//code.jquery.com/jquery-3.7.0.min.js" id="jquery-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async data-rocket-src="https://vcx.solutions/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.1" id="addtoany-jquery-js"></script>
+
+<!-- Snippet do Google Analytics adicionado pelo Site Kit -->
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-Y4M9T259BS" id="google_gtagjs-js" async></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="google_gtagjs-js-after">
+/* <![CDATA[ */
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["vcx.solutions"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "G-Y4M9T259BS");
+/* ]]> */
+</script>
+
+<!-- Finalizar o snippet do Google Analytics adicionado pelo Site Kit -->
+<link rel="https://api.w.org/" href="https://vcx.solutions/wp-json/" /><link rel="alternate" type="application/json" href="https://vcx.solutions/wp-json/wp/v2/posts/1362" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://vcx.solutions/xmlrpc.php?rsd" />
+<link rel='shortlink' href='https://vcx.solutions/?p=1362' />
+<link rel="alternate" type="application/json+oembed" href="https://vcx.solutions/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvcx.solutions%2Fo-que-e-tecnologia-da-informacao-ti%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://vcx.solutions/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvcx.solutions%2Fo-que-e-tecnologia-da-informacao-ti%2F&#038;format=xml" />
+<meta name="generator" content="Site Kit by Google 1.121.0" /><!-- Linkedin Insight Base Code --!><script type="rocketlazyloadscript" data-rocket-type='text/javascript'>_linkedin_partner_id = '3990057';window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script><script type="rocketlazyloadscript" data-rocket-type='text/javascript'>(function(){var s = document.getElementsByTagName('script')[0];var b = document.createElement('script');b.type = 'text/javascript';b.async = true;b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';s.parentNode.insertBefore(b, s);})();</script><noscript><img height='1' width='1' style='display:none;' alt='' src='https://dc.ads.linkedin.com/collect/?pid=3990057&fmt=gif' /></noscript><!-- End Linkedin Insight Base Code --!>
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- GTM Container placement set to automatic -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var dataLayer_content = {"pagePostType":"post","pagePostType2":"single-post","pageCategory":["gestao-ti"],"pageAttributes":["conceitos-ti"],"pagePostAuthor":"Aline"};
+	dataLayer.push( dataLayer_content );
+</script>
+<script type="rocketlazyloadscript" data-cfasync="false">
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TL3HRB7');
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- Metatags do Google AdSense adicionado pelo Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- Fim das metatags do Google AdSense adicionado pelo Site Kit -->
+<link rel="icon" href="https://vcx.solutions/wp-content/uploads/2022/03/cropped-favicon-vcx-96x96.png" sizes="32x32" />
+<link rel="icon" href="https://vcx.solutions/wp-content/uploads/2022/03/cropped-favicon-vcx-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://vcx.solutions/wp-content/uploads/2022/03/cropped-favicon-vcx-300x300.png" />
+<meta name="msapplication-TileImage" content="https://vcx.solutions/wp-content/uploads/2022/03/cropped-favicon-vcx-300x300.png" />
+			<style type="text/css">
+					.is-form-id-5861 .is-search-submit:focus,
+			.is-form-id-5861 .is-search-submit:hover,
+			.is-form-id-5861 .is-search-submit,
+            .is-form-id-5861 .is-search-icon {
+			            background-color: #ffffff !important;            border-color: #ffffff !important;			}
+            			.is-form-style-1.is-form-id-5861 .is-search-input:focus,
+			.is-form-style-1.is-form-id-5861 .is-search-input:hover,
+			.is-form-style-1.is-form-id-5861 .is-search-input,
+			.is-form-style-2.is-form-id-5861 .is-search-input:focus,
+			.is-form-style-2.is-form-id-5861 .is-search-input:hover,
+			.is-form-style-2.is-form-id-5861 .is-search-input,
+			.is-form-style-3.is-form-id-5861 .is-search-input:focus,
+			.is-form-style-3.is-form-id-5861 .is-search-input:hover,
+			.is-form-style-3.is-form-id-5861 .is-search-input,
+			.is-form-id-5861 .is-search-input:focus,
+			.is-form-id-5861 .is-search-input:hover,
+			.is-form-id-5861 .is-search-input {
+                                                                border-color: #ffffff !important;                                			}
+                        			</style>
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=UA-105319428-1"></script>
+    <script type="rocketlazyloadscript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-105319428-1');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-C4D6N54SKM"></script>
+    <script type="rocketlazyloadscript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C4D6N54SKM');
+    </script>
+    <!doctypehtml><style>.backdrop{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;z-index:1000}.lightbox{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;max-width:450px;width:90%;height:80%;display:none;overflow-y:hidden;z-index:1001}.header{background-color:#128c7e;color:#fff;padding:10px;text-align:center;font-size:20px}.close{position:absolute;top:10px;right:10px;font-size:20px;color:#fff;cursor:pointer}#open{transition:all .2s ease-in-out}#open:hover{width:70px;height:70px}@keyframes shake{0%{transform:translate(1px,1px) rotate(0)}10%{transform:translate(-1px,-2px) rotate(-1deg)}20%{transform:translate(-3px,0) rotate(1deg)}30%{transform:translate(3px,2px) rotate(0)}40%{transform:translate(1px,-1px) rotate(1deg)}50%{transform:translate(-1px,2px) rotate(-1deg)}60%{transform:translate(-3px,1px) rotate(0)}70%{transform:translate(3px,1px) rotate(-1deg)}80%{transform:translate(-1px,-1px) rotate(1deg)}90%{transform:translate(1px,2px) rotate(0)}100%{transform:translate(1px,-2px) rotate(-1deg)}}</style><img id=open src=https://vcx.solutions/wp-content/uploads/2023/07/whatsapp-1.png style=border-radius:34px;width:60px;font-size:0;height:60px;position:fixed;right:10px;z-index:1000;display:block;bottom:10px;background-size:73%;background-repeat:no-repeat;background-color:#1bd741;background-position:center><div class=backdrop id=backdrop></div><div class=lightbox id=lightbox><div class=header>Whatsapp</div><span class=close id=close>×</span><iframe allow="geolocation; microphone; camera"allowfullscreen allowtransparency=true frameborder=0 id=JotFormIFrame-240313647906658 onload=window.parent.scrollTo(0,0) scrolling=yes src=https://form.jotform.com/240313647906658 style=min-width:100%;max-width:100%;height:80vh;border:none title=Whatsapp></iframe></div><script type="rocketlazyloadscript">var open=document.getElementById("open"),close=document.getElementById("close"),lightbox=document.getElementById("lightbox"),backdrop=document.getElementById("backdrop");open.addEventListener("click",function(){lightbox.style.display="block",backdrop.style.display="block"}),close.addEventListener("click",function(){lightbox.style.display="none",backdrop.style.display="none"}),setTimeout(function(){open.style.animation="shake 0.5s",open.style.animationIterationCount="2"},7e3)</script>
+</head>
+<body id="body">
+
+<header class="desktop">
+    <nav>
+        <div class="logo">
+            <a href="https://vcx.solutions/">
+                <img width="106" height="40" data-no-lazy="1" src="https://vcx.solutions/wp-content/uploads/2021/08/vc-x-logo-header.svg" alt="Logo VC-X"><span></span>
+            </a>
+        </div>
+        <div class="menu">
+            <ul>
+                                <li><a class="" href="https://vcx.solutions/sonar">Solução</a></li>
+                                <li><a class="" href="https://vcx.solutions/planos/">Planos</a></li>
+                                <li><a class="" href="https://vcx.solutions/cases/">Cases</a></li>
+                                <li class="sub">
+                    <a href="#" class="ativo">Conteúdos<i class="arrow down"></i></a>
+                    <div class="navega-content">
+                        <div class="top"></div>
+                        <div class="submenu">
+                                                            <a href="https://vcx.solutions/blog/">Blog<i class="arrow right"></i></a>
+                                                                <a href="https://vcx.solutions/materiais-ricos/">Materiais Ricos<i class="arrow right"></i></a>
+                                                                <a href="https://vcx.solutions/webstories/">Web Stories<i class="arrow right"></i></a>
+                                                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </li>
+                                <li class="sub">
+                    <a href="https://vcx.solutions/sobre/" class="">Sobre<i class="arrow down"></i></a>
+                    <div class="navega-content">
+                        <div class="top"></div>
+                        <div class="submenu">
+                                                            <a class="menulink" href="https://vcx.solutions/sobre/#numeros">Nossos números<i class="arrow right"></i></a>
+                                                                <a class="menulink" href="https://vcx.solutions/sobre/#quemsomos">Quem somos<i class="arrow right"></i></a>
+                                                                <a class="menulink" href="https://vcx.solutions/sobre/#historia">Nossa história<i class="arrow right"></i></a>
+                                                                <a class="menulink" href="https://vcx.solutions/sobre/#vagas">Faça parte da VC-X<i class="arrow right"></i></a>
+                                                                <a class="menulink" href="https://vcx.solutions/sobre/#midia">Na Mídia<i class="arrow right"></i></a>
+                                                                <a class="menulink" href="https://vcx.solutions/sobre/#marcas">Aceleradoras<i class="arrow right"></i></a>
+                                                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </li>
+                                <li><a class="" href="https://vcx.solutions/contato/">Contato</a></li>
+                            </ul>
+        </div>
+        <div class="shape">
+            <div></div>
+        </div>
+        <div class="login">
+            <ul>
+                                <li><a target="_blank" rel="noopener" href="https://app.vcx.solutions/entrar/">Login</a></li>
+                                <li><a target="_blank" rel="noopener" href="https://app.vcx.solutions/usuario/adicionar">Teste Grátis</a></li>
+                            </ul>
+        </div>
+    </nav>
+</header>
+
+<header class="mobile">
+    <nav>
+        <div class="logo">
+            <a href="https://vcx.solutions/">
+                <img width="106" height="40" data-no-lazy="1" src="https://vcx.solutions/wp-content/uploads/2021/08/vc-x-logo-header.svg" alt="Logo VC-X">
+            </a>
+        </div>
+        <a class="toggle_menu">
+            <div class="sanduiche">
+                <img width="47" height="37" data-no-lazy="1" src="https://vcx.solutions/wp-content/themes/vcx/img/burger.svg" alt="Burger menu" />
+            </div>
+        </a>
+    </nav>
+</header>
+
+<nav id="mySidenav" class="sidenav">
+    <div class="logo">
+        <a href="https://vcx.solutions/">
+            <img width="106" height="40" data-no-lazy="1" src="https://vcx.solutions/wp-content/uploads/2021/08/vc-x-logo-header.svg" alt="Logo VC-X">
+        </a>
+    </div>
+    <a class="toggle_menu">
+        <div class="fechar">
+            <img width="39" height="39" data-no-lazy="1" src="https://vcx.solutions/wp-content/themes/vcx/img/fechar.svg" alt="Fechar menu" />
+        </div>
+    </a>
+    <div class="clear"></div>
+    <div class="menu">
+        <ul>
+                        <li><a href="https://vcx.solutions/sonar"><span>Solução</span></a></li>
+                        <li><a href="https://vcx.solutions/planos/"><span>Planos</span></a></li>
+                        <li><a href="https://vcx.solutions/cases/"><span>Cases</span></a></li>
+                        <li class="sub">
+                <a class="dropdown-btn"><span>Conteúdos</span><i class="arrow right"></i></a>
+                <div class="navega-content navega-content-d">
+                    <div class="submenu">
+                        <a class="voltar voltar-d"><i class="arrow left"></i> Voltar</a>
+                                                    <a href="https://vcx.solutions/blog/">Blog</a>
+                                                        <a href="https://vcx.solutions/materiais-ricos/">Materiais Ricos</a>
+                                                        <a href="https://vcx.solutions/webstories/">Web Stories</a>
+                                                    <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </li>
+                        <li class="sub">
+                <a class="dropdown-btn"><span>Sobre</span><i class="arrow right"></i></a>
+                <div class="navega-content navega-content-e">
+                    <div class="submenu">
+                        <a class="voltar voltar-e"><i class="arrow left"></i> Voltar</a>
+                                                    <a class="menulink toggle_menu" href="https://vcx.solutions/sobre/#numeros">Nossos números</a>
+                                                        <a class="menulink toggle_menu" href="https://vcx.solutions/sobre/#quemsomos">Quem somos</a>
+                                                        <a class="menulink toggle_menu" href="https://vcx.solutions/sobre/#historia">Nossa história</a>
+                                                        <a class="menulink toggle_menu" href="https://vcx.solutions/sobre/#vagas">Faça parte da VC-X</a>
+                                                        <a class="menulink toggle_menu" href="https://vcx.solutions/sobre/#midia">Na Mídia</a>
+                                                        <a class="menulink toggle_menu" href="https://vcx.solutions/sobre/#marcas">Aceleradoras</a>
+                                                    <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </li>
+                        <li><a href="https://vcx.solutions/contato/"><span>Contato</span></a></li>
+                    </ul>
+    </div>
+</nav>
+<div id="progress-container">
+    <div id="progress-bar-container">
+        <div id="progress-bar" class="inves"></div>
+    </div> 
+</div>
+<section class="blog_single">
+    <div class="top">
+        <div class="container">
+            <div class="titulo">
+                <div class="tags">
+                    <div>Conceitos TI</div>                </div>
+                <h1>O que é Tecnologia da Informação?</h1>
+                <div class="data">Por <span>Ulysses Dutra</span> <b>| 08.09.21</b></div>
+                <div class="share">
+                    Compartilhe
+                    <div class="addtoany_shortcode"><div class="a2a_kit a2a_kit_size_36 addtoany_list" data-a2a-url="https://vcx.solutions/o-que-e-tecnologia-da-informacao-ti/" data-a2a-title="O que é Tecnologia da Informação?"><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fvcx.solutions%2Fo-que-e-tecnologia-da-informacao-ti%2F&amp;linkname=O%20que%20%C3%A9%20Tecnologia%20da%20Informa%C3%A7%C3%A3o%3F" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_whatsapp" href="https://www.addtoany.com/add_to/whatsapp?linkurl=https%3A%2F%2Fvcx.solutions%2Fo-que-e-tecnologia-da-informacao-ti%2F&amp;linkname=O%20que%20%C3%A9%20Tecnologia%20da%20Informa%C3%A7%C3%A3o%3F" title="WhatsApp" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fvcx.solutions%2Fo-que-e-tecnologia-da-informacao-ti%2F&amp;linkname=O%20que%20%C3%A9%20Tecnologia%20da%20Informa%C3%A7%C3%A3o%3F" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_email" href="https://www.addtoany.com/add_to/email?linkurl=https%3A%2F%2Fvcx.solutions%2Fo-que-e-tecnologia-da-informacao-ti%2F&amp;linkname=O%20que%20%C3%A9%20Tecnologia%20da%20Informa%C3%A7%C3%A3o%3F" title="Email" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_copy_link" href="https://www.addtoany.com/add_to/copy_link?linkurl=https%3A%2F%2Fvcx.solutions%2Fo-que-e-tecnologia-da-informacao-ti%2F&amp;linkname=O%20que%20%C3%A9%20Tecnologia%20da%20Informa%C3%A7%C3%A3o%3F" title="Copy Link" rel="nofollow noopener" target="_blank"></a></div></div>                    <div class="clear"></div>
+                </div>    
+            </div>
+            <div class="imagem">
+                <picture class="attachment-medium_large size-medium_large wp-post-image" decoding="async" fetchpriority="high">
+<source type="image/webp" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-768x450.jpg.webp 768w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-300x176.jpg.webp 300w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-1024x600.jpg.webp 1024w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-150x88.jpg.webp 150w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg.webp 1450w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20768%20450&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 768px) 100vw, 768px"/>
+<img width="768" height="450" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20768%20450&#039;%3E%3C/svg%3E" alt="" decoding="async" fetchpriority="high" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-768x450.jpg 768w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-300x176.jpg 300w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-1024x600.jpg 1024w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-150x88.jpg 150w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg 1450w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-lazy-src="https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-768x450.jpg"/>
+</picture>
+<noscript><picture class="attachment-medium_large size-medium_large wp-post-image" decoding="async" fetchpriority="high">
+<source type="image/webp" srcset="https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-768x450.jpg.webp 768w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-300x176.jpg.webp 300w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-1024x600.jpg.webp 1024w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-150x88.jpg.webp 150w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg.webp 1450w" sizes="(max-width: 768px) 100vw, 768px"/>
+<img width="768" height="450" src="https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-768x450.jpg" alt="" decoding="async" fetchpriority="high" srcset="https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-768x450.jpg 768w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-300x176.jpg 300w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-1024x600.jpg 1024w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI-150x88.jpg 150w, https://vcx.solutions/wp-content/uploads/2021/09/CAPA-Artigo-O-que-e-Tecnologia-da-Informacao-TI.jpg 1450w" sizes="(max-width: 768px) 100vw, 768px"/>
+</picture>
+</noscript>            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="conteudo">
+            
+<p><em>TI é uma abreviação de &#8220;Tecnologia da Informação&#8221; e refere-se ao conjunto de soluções empregadas no desenvolvimento, manutenção e uso de computadores, softwares, sistemas e redes. Entenda porque esse setor é fundamental para as empresas</em></p>
+
+
+
+<p>Para a maioria das pessoas, quando se fala em <strong>TI</strong> ou <strong>tecnologia da informação</strong>, logo vem à mente os profissionais que você busca quando precisa de ajuda com um problema no computador.</p>
+
+
+
+<p>Embora não seja uma visão totalmente errada, ela subestima um potencial que vem evoluindo rapidamente com a transformação digital.</p>
+
+
+
+<p>Impulsionada pela chegada de inovações como <strong><a href="https://vcx.solutions/os-impactos-da-tecnologia-5g-no-setor-de-telecom-e-ti/">5G</a>, Internet das Coisas, Computação na Nuvem, Computação de Borda e Inteligência Artificial</strong>, a tecnologia da informação se torna cada vez mais estratégica para todos os tipos de negócios.</p>
+
+
+
+<p>Essa tendência é reforçada por um <a href="https://brasscom.org.br/relatorio-setorial-2020-macrossetor-de-tic/" target="_blank" rel="noreferrer noopener">relatório</a> da Associação Brasileira das Empresas de Tecnologia da Informação e Comunicação (Brasscom). Segundo o estudo, o setor de tecnologia da informação (TI) deve receber investimentos de R$ 845 bilhões até 2024.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-mas-o-que-e-tecnologia-da-informacao-ti">Mas o que é tecnologia da informação (TI)?</h2>
+
+
+
+<p>Tecnologia da informação (TI) refere-se ao conjunto de soluções empregadas no desenvolvimento, manutenção e uso de computadores, softwares, sistemas e redes, voltados para criar, processar, armazenar, proteger e trocar dados e informações.</p>
+
+
+
+<p>Normalmente, o conceito é usado para se referir à tecnologia no contexto das operações de negócios, o que abrange tanto a tecnologia da computação, quanto às telecomunicações. Ou seja, TI representa qualquer atividade, dispositivo ou sistema envolvido na transmissão de dados e informações, bem como na comunicação.</p>
+
+
+
+<figure class="wp-block-image size-full"><picture decoding="async" class="wp-image-3515">
+<source type="image/webp" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi.png.webp 1000w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-300x149.png.webp 300w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-768x380.png.webp 768w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-150x74.png.webp 150w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%201000%20495&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 1000px) 100vw, 1000px"/>
+<img decoding="async" width="1000" height="495" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%201000%20495&#039;%3E%3C/svg%3E" alt="O que é tecnologia da informação" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi.png 1000w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-300x149.png 300w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-768x380.png 768w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-150x74.png 150w" data-lazy-sizes="(max-width: 1000px) 100vw, 1000px" data-lazy-src="https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi.png"/>
+</picture>
+<noscript><picture decoding="async" class="wp-image-3515">
+<source type="image/webp" srcset="https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi.png.webp 1000w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-300x149.png.webp 300w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-768x380.png.webp 768w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-150x74.png.webp 150w" sizes="(max-width: 1000px) 100vw, 1000px"/>
+<img decoding="async" width="1000" height="495" src="https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi.png" alt="O que é tecnologia da informação" srcset="https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi.png 1000w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-300x149.png 300w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-768x380.png 768w, https://vcx.solutions/wp-content/uploads/2022/02/IMAGEMTecnologia-Informacao-e-Tecnologi-150x74.png 150w" sizes="(max-width: 1000px) 100vw, 1000px"/>
+</picture>
+</noscript></figure>
+
+
+
+<h2 class="wp-block-heading" id="como-funciona-o-setor-de-tecnologia-da-informacao-nas-empresas">Como funciona o setor de tecnologia da informação nas empresas?</h2>
+
+
+
+<p>Dentro de uma empresa, o departamento de TI garante que sistemas, redes, dados e aplicativos estejam conectados e funcionando. Para isso, é preciso contar com um time de profissionais com diferentes conhecimentos, funções e responsabilidades.</p>
+
+
+
+<p>Portanto, o departamento de tecnologia da informação pode ser dividido em quatro áreas principais:</p>
+
+
+
+<p><strong>1) Administração</strong></p>
+
+
+
+<p>Atua com a implantação, gestão e monitoramento do dia a dia do departamento de TI, incluindo sistemas, redes e aplicativos.&nbsp;</p>
+
+
+
+<p>Em geral, os administradores também executam uma série de outras funções, como compras, atualizações de software, treinamento de usuários, segurança, gerenciamento de licenças de software, gerenciamento de dados e observação sobre aderência e cumprimento de processos de negócios e requisitos de conformidade.</p>
+
+
+
+<p><strong>Leia mais: <a href="https://vcx.solutions/gestao-de-ti/" target="_blank" rel="noreferrer noopener">Gestão de TI: o que é e como usar de forma estratégica no seu negócio</a></strong></p>
+
+
+
+<p><strong>2) Suporte ou help desk</strong></p>
+
+
+
+<p>Sabe quando você chama o “moço da TI?&#8221; Normalmente esse atendimento é prestado pela equipe de suporte, que tem a responsabilidade de esclarecer dúvidas, coletar informações e solucionar problemas com dispositivos, softwares e redes.</p>
+
+
+
+<p>Além disso, o suporte de tecnologia da informação normalmente inclui o auxílio na tomada de decisões relativas à aquisições e mudanças tecnológicas, seguindo fluxos de trabalho e processos de suporte estabelecidos para:</p>
+
+
+
+<ul>
+<li>Gerenciamento de backup;</li>
+
+
+
+<li>Recuperação de dados e aplicativos;</li>
+
+
+
+<li>Monitoramento e análise de desempenho.</li>
+</ul>
+
+
+
+<p><strong>Leia mais: <a href="https://vcx.solutions/como-construir-um-inventario-de-ti/" target="_blank" rel="noreferrer noopener">Como construir um inventário de TI?</a></strong></p>
+
+
+
+<p><strong>3) Desenvolvimento e gestão de aplicativos</strong></p>
+
+
+
+<p>Desenvolvedores ganham cada vez mais importância nas operações de TI de muitas organizações. Afinal, a maioria atravessa uma reestruturação a partir da digitalização de produtos, serviços e processos.</p>
+
+
+
+<p>Por isso, em muitos segmentos, os desenvolvedores podem atuar na criação e gestão de aplicativos móveis, landing pages, sites interativos e chatbots, entre outras soluções digitais próprias, como também as APIs, interfaces que permitem interações suaves e contínuas entre aplicativos, para uma experiência do usuário fluida e coesa.</p>
+
+
+
+<p><strong>4) Segurança da informação e conformidade</strong></p>
+
+
+
+<p>Supervisiona a <a href="https://vcx.solutions/seguranca-digital-qual-a-importancia-para-as-empresas/">segurança digital</a> e a governança de aplicativos, serviços, infraestrutura, processos e dados. Portanto, é a área responsável por dois pilares de grande relevância:</p>
+
+
+
+<p>1. Garantia da defesa de softwares, hardwares, redes, dados e informações digitais, contra ameaças como roubos e vazamentos, ou o acesso de pessoas não autorizadas.</p>
+
+
+
+<p>2. Cumprimento e conformidade da operação com regulamentações oficiais, como a <a href="https://vcx.solutions/tudo-que-voce-precisa-saber-sobre-a-lgpd/" target="_blank" rel="noreferrer noopener">Lei Geral de Proteção de Dados</a> (LGPD) e legislações específicas de cada setor.</p>
+
+
+
+<p>Para executar essas tarefas com eficiência, a equipe de segurança de TI precisa estar em permanente contato com os departamentos jurídico e administrativo para prevenir, detectar, investigar e relatar possíveis violações.</p>
+
+
+
+<p><strong>Leia mais: <a href="https://vcx.solutions/iso-27001-tudo-que-voce-precisa-saber-sobre-a-certificacao/" target="_blank" rel="noreferrer noopener">ISO 27001: tudo que você precisa saber sobre a certificação</a></strong></p>
+
+
+
+<p>Além de contar com uma boa equipe e processos bem definidos, um setor de TI normalmente faz uso de diversas plataformas para executar suas atividades de forma organizada e, muitas vezes, automatizada. Dentre eles: sistemas de help desk, softwares para gestão de ativos, licenças e contratos, inventário de TI, dentre outros.</p>
+
+
+
+<blockquote class="wp-block-quote">
+<p><a href="https://app.vcx.solutions/entrar/?utm_source=blog&amp;utm_medium=link_texto&amp;utm_campaign=link_texto_blog&amp;utm_id=blog+site" target="_blank" rel="noreferrer noopener">VC-X SONAR: UMA PLATAFORMA COMPLETA PARA DESCOMPLICAR A TELECOM E TI DA SUA EMPRESA. TESTE GRATUITAMENTE</a> ➜</p>
+</blockquote>
+
+
+
+<h2 class="wp-block-heading" id="cargos-e-funcoes-em-alta-no-setor-de-tecnologia-da-informacao">Cargos e funções em alta no setor de tecnologia da informação</h2>
+
+
+
+<p>Uma pesquisa do Linkedin apontou os 25 cargos em alta para 2022, sendo que <strong>metade deles estão diretamente relacionados ao setor de TI</strong>. Todos tiveram um crescimento na oferta de vagas nos últimos 5 anos.</p>
+
+
+
+<p>Dentre os empregos em alta no setor de TI, estão:</p>
+
+
+
+<ul>
+<li>Recrutador(a) especializado(a) em tecnologia</li>
+
+
+
+<li>Engenheiro(a) de confiabilidade de sites, também conhecido como: <em>Site Reliability Engineer &#8211; SRE</em></li>
+
+
+
+<li>Engenheiro(a) de dados (<em>Data engineer</em>)</li>
+
+
+
+<li>Especialista em cibersegurança</li>
+
+
+
+<li>Engenheiro(a) de machine learning, também conhecido como: Engenheiro(a) de aprendizado de máquina)</li>
+
+
+
+<li>Cientista de dados, também conhecido como Analista de dados, <em>Data Science Specialist</em></li>
+
+
+
+<li>Analista de desenvolvimento de sistemas</li>
+
+
+
+<li>Engenheiro(a) de robótica</li>
+
+
+
+<li>Desenvolvedor(a) Back-end</li>
+
+
+
+<li>Consultor(a) de gestão de dados, também conhecido como Arquiteto(a) de Dados</li>
+</ul>
+
+
+
+<p>Também são cargos importantes para o setor de TI das empresas:</p>
+
+
+
+<p><strong>Chief Technology Officer (CTO) ou Diretor de Tecnologia</strong> – é quem define as metas e políticas de tecnologia dentro da empresa, portanto significa o cargo mais alto no departamento de TI. Tem a responsabilidade de observar as necessidades de curto e longo prazo para otimizar investimentos em tecnologia, assegurando o retorno financeiro e o cumprimento de metas estratégicas de negócio.</p>
+
+
+
+<p><strong>Gerente de Projetos ou Product</strong> <strong>Owner</strong> – cria, planeja e controla a execução de projetos em desenvolvimento de aplicativos e softwares.</p>
+
+
+
+<p><strong>Administrador de Redes</strong> – configura, gerencia, oferece suporte e soluciona problemas nos ambientes de redes de servidores e data centers, bem como atualiza hardwares e softwares.</p>
+
+
+
+<p><strong>Analista de Suporte ou help desk</strong> – presta suporte para dúvidas e problemas técnicos, fornecendo assistência para clientes internos ou externos.</p>
+
+
+
+<p><strong>Especialista de Business Intelligence (BI)</strong> &#8211; organiza a coleta e monitoramento de dados com objetivo de extrair informações e insights estratégicos para os gestores tomarem melhores decisões de negócio.</p>
+
+
+
+<p><strong>Gerente de segurança de TI</strong> – responsável por garantir que dispositivos, softwares, redes e dados da empresa e dos usuários de seus serviços estejam protegidos contra roubos, fraudes, vazamentos ou acesso não permitido.</p>
+
+
+
+<p><strong>Desenvolvedor ou Engenheiro de Software</strong> – responsável pelo desenvolvimento de softwares e sistemas, através da programação, que é a escrita de códigos digitais. Além disso, cuida também das atualizações e testes.</p>
+
+
+
+<p><strong>Especialista em Computação na Nuvem – </strong>garante a segurança, disponibilidade e eficiência das soluções em <a href="https://vcx.solutions/cloud-computing-o-futuro-da-ti/" target="_blank" rel="noreferrer noopener">Computação na Nuvem</a>.</p>
+
+
+
+<p><strong>Chief Data Officer (CDO)</strong> – é um cargo bem recente, que representa o profissional responsável por liderar a transformação digital nas empresas. Sua função é garantir que tecnologias como Big Data, Internet das Coisas, Inteligência Artificial e metodologias inovadoras, como Design Thinking, Scrum, DevOps e MVP, sejam adotadas de forma eficaz, com agilidade.</p>
+
+
+
+<div role="main" id="news-vc-x-formulario-bc7b8c8dc6d92d02f193"></div><script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js"></script><script type="rocketlazyloadscript" data-rocket-type="text/javascript"> new RDStationForms('news-vc-x-formulario-bc7b8c8dc6d92d02f193', 'UA-105319428-1').createForm();</script>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="a-importancia-da-ti-na-era-da-transformacao-digital">A importância da TI na era da transformação digital</h2>
+
+
+
+<p>Atualmente, produzir excelentes produtos e entregar serviços impecáveis é essencial&nbsp; para garantir o sucesso nos negócios. Hoje, toda empresa precisa ser capaz de fornecer o produto certo, para a pessoa certa. Ou seja, precisa adotar uma abordagem centrada no cliente.</p>
+
+
+
+<p>Nesse sentido, a tecnologia da informação auxilia no aperfeiçoamento de diversos processos básicos que facilitam essa tarefa. A tecnologia oferece apoio para o&nbsp;funcionamento geral da operação, como:</p>
+
+
+
+<ul>
+<li>Desenvolvimento e design de produtos;</li>
+
+
+
+<li>Marketing e pesquisa de mercado;</li>
+
+
+
+<li>Vendas e faturamento;</li>
+
+
+
+<li>Geração de leads e retenção de clientes;</li>
+
+
+
+<li>Contabilidade e impostos;</li>
+
+
+
+<li>Recursos humanos e folha de pagamento;</li>
+
+
+
+<li>Conformidade regulatória.</li>
+</ul>
+
+
+
+<p><strong>Leia mais: <a href="https://vcx.solutions/o-que-e-transformacao-digital/" target="_blank" rel="noreferrer noopener">O que é transformação digital?</a></strong></p>
+
+
+
+<p>Além disso, hoje, assim como a maioria das pessoas, as empresas também possuem uma série de dispositivos conectados, incluindo smartphones, tablets, laptops, até assistentes de voz, consoles de jogos e termostatos, por exemplo.</p>
+
+
+
+<p>Juntos, todos esses equipamentos criam um ambiente complexo e com alguns riscos para a segurança digital das empresas. Isso requer os serviços de um bom departamento de TI, para inventariar, gerenciar, proteger, manter e atualizar todos os dispositivos, softwares, redes e sistemas.</p>
+
+
+
+<p>Portanto, independente do tamanho ou segmento, para sobreviver e prosperar em meio à uma economia digital em rápida evolução, toda empresa deve contar com um departamento de tecnologia da informação bem preparado.</p>
+
+
+
+<p><strong>Leia mais:&nbsp;<a href="https://vcx.solutions/tendencias-de-telecom-e-ti/" target="_blank" rel="noreferrer noopener">11 tendências de telecom e TI para 2023</a></strong></p>
+
+
+
+<style>
+@media screen and (max-width: 600px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+</style>
+
+<table style="border: 3px solid #969fcb; border-radius: 11px">
+  <tbody><tr>
+    <td class="hide-on-mobile" valign="top" width="275px"><picture decoding="async" style="max-width: 280px;padding-top: 50px; padding-left: 20px;">
+<source type="image/webp" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2024/02/Guia-de-gestao-de-TI.png.webp" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20400%20278&#039;%3E%3C/svg%3E"/>
+<img width="400" height="278" decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20400%20278&#039;%3E%3C/svg%3E" alt="Guia de Gestão de TI" data-lazy-src="https://vcx.solutions/wp-content/uploads/2024/02/Guia-de-gestao-de-TI.png"/>
+</picture>
+<noscript><picture decoding="async" style="max-width: 280px;padding-top: 50px; padding-left: 20px;">
+<source type="image/webp" srcset="https://vcx.solutions/wp-content/uploads/2024/02/Guia-de-gestao-de-TI.png.webp"/>
+<img width="400" height="278" decoding="async" src="https://vcx.solutions/wp-content/uploads/2024/02/Guia-de-gestao-de-TI.png" alt="Guia de Gestão de TI"/>
+</picture>
+</noscript></td>
+    <td style="
+    padding-top: 20px; padding-left: 20px; padding-right: 20px;
+"><p style="
+    margin-bottom: 10px;
+"><strong style="font-size: 16px; color: #969fcb;">[MATERIAL GRATUITO]</strong><br><strong style="font-size: 32px; color: rgb(66, 83, 160);">Guia de Gestão de TI</strong></p><p style="
+    margin-bottom: 10px; line-height: 1.0;
+"><span style="font-size: 16px; line-height:0,3; background-color: transparent; color: rgb(74, 74, 74);">Saiba como usar a tecnologia de forma estratégica no seu negócio. Entenda como controlar os recursos tecnológicos da empresa, conheça as principais atribuições da gestão de TI e outras dicas.
+<br><br>
+Preencha os dados abaixo e faça o download!
+</span></p></td>
+  </tr>
+  <tr>
+    <td colspan="2">   
+    <iframe loading="lazy"
+      id="JotFormIFrame-233135924287662"
+      title="[Material rico] [LP] Guia de Gestão de TI"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allowfullscreen="true"
+      allow="geolocation; microphone; camera"
+      src="about:blank"
+      frameborder="0"
+      style="min-width:100%;max-width:100%;height:539px;border:none;"
+      scrolling="no"
+     data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://form.jotform.com/233135924287662">
+    </iframe><noscript><iframe
+      id="JotFormIFrame-233135924287662"
+      title="[Material rico] [LP] Guia de Gestão de TI"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allowfullscreen="true"
+      allow="geolocation; microphone; camera"
+      src="https://form.jotform.com/233135924287662"
+      frameborder="0"
+      style="min-width:100%;max-width:100%;height:539px;border:none;"
+      scrolling="no"
+    >
+    </iframe></noscript>
+    <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+    var ifr = document.getElementById("JotFormIFrame-233135924287662");
+    if (ifr) {
+      var src = ifr.src;
+      var iframeParams = [];
+      if (window.location.href && window.location.href.indexOf("?") > -1) {
+        iframeParams = iframeParams.concat(window.location.href.substr(window.location.href.indexOf("?") + 1).split('&'));
+      }
+      if (src && src.indexOf("?") > -1) {
+        iframeParams = iframeParams.concat(src.substr(src.indexOf("?") + 1).split("&"));
+        src = src.substr(0, src.indexOf("?"))
+      }
+      iframeParams.push("isIframeEmbed=1");
+      ifr.src = src + "?" + iframeParams.join('&');
+    }
+    window.handleIFrameMessage = function(e) {
+      if (typeof e.data === 'object') { return; }
+      var args = e.data.split(":");
+      if (args.length > 2) { iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]); } else { iframe = document.getElementById("JotFormIFrame"); }
+      if (!iframe) { return; }
+      switch (args[0]) {
+        case "scrollIntoView":
+          iframe.scrollIntoView();
+          break;
+        case "setHeight":
+          iframe.style.height = args[1] + "px";
+          if (!isNaN(args[1]) && parseInt(iframe.style.minHeight) > parseInt(args[1])) {
+            iframe.style.minHeight = args[1] + "px";
+          }
+          break;
+        case "collapseErrorPage":
+          if (iframe.clientHeight > window.innerHeight) {
+            iframe.style.height = window.innerHeight + "px";
+          }
+          break;
+        case "reloadPage":
+          window.location.reload();
+          break;
+        case "loadScript":
+          if( !window.isPermitted(e.origin, ['jotform.com', 'jotform.pro']) ) { break; }
+          var src = args[1];
+          if (args.length > 3) {
+              src = args[1] + ':' + args[2];
+          }
+          var script = document.createElement('script');
+          script.src = src;
+          script.type = 'text/javascript';
+          document.body.appendChild(script);
+          break;
+        case "exitFullscreen":
+          if      (window.document.exitFullscreen)        window.document.exitFullscreen();
+          else if (window.document.mozCancelFullScreen)   window.document.mozCancelFullScreen();
+          else if (window.document.mozCancelFullscreen)   window.document.mozCancelFullScreen();
+          else if (window.document.webkitExitFullscreen)  window.document.webkitExitFullscreen();
+          else if (window.document.msExitFullscreen)      window.document.msExitFullscreen();
+          break;
+      }
+      var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
+      if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
+        var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)};
+        iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*");
+      }
+    };
+    window.isPermitted = function(originUrl, whitelisted_domains) {
+      var url = document.createElement('a');
+      url.href = originUrl;
+      var hostname = url.hostname;
+      var result = false;
+      if( typeof hostname !== 'undefined' ) {
+        whitelisted_domains.forEach(function(element) {
+            if( hostname.slice((-1 * element.length - 1)) === '.'.concat(element) ||  hostname === element ) {
+                result = true;
+            }
+        });
+        return result;
+      }
+    };
+    if (window.addEventListener) {
+      window.addEventListener("message", handleIFrameMessage, false);
+    } else if (window.attachEvent) {
+      window.attachEvent("onmessage", handleIFrameMessage);
+    }
+    </script></td>
+  </tr>
+</tbody></table>
+            <div class="cartao">
+                <div class="card">
+                    <div class="imagem">
+                        <picture>
+<source type="image/webp" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2021/09/ulysses-dutra.jpg.webp" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20120%20120&#039;%3E%3C/svg%3E"/>
+<img width="120" height="120" alt="Avatar Ulysses Dutra" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20120%20120&#039;%3E%3C/svg%3E" data-lazy-src="https://vcx.solutions/wp-content/uploads/2021/09/ulysses-dutra.jpg"/>
+</picture>
+<noscript><picture>
+<source type="image/webp" srcset="https://vcx.solutions/wp-content/uploads/2021/09/ulysses-dutra.jpg.webp"/>
+<img width="120" height="120" alt="Avatar Ulysses Dutra" src="https://vcx.solutions/wp-content/uploads/2021/09/ulysses-dutra.jpg"/>
+</picture>
+</noscript>
+                    </div>
+                    <div class="texto">
+                        <p class="escrito">Por</p>
+                        <p class="nome">Ulysses Dutra</p>
+                    </div>
+                    <div class="botao">
+                                            </div>
+                    <div class="clear"></div>
+                    <hr>
+                    <p class="descricao">Redator, jornalista e músico, aficionado por tecnologia & inovação, geopolítica e rock’n’roll/blues/funk/reggae/samba/soul</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+                        <div class="clear"></div>
+        </div>
+        <div class="relacionados">
+            <h2>Postagens relacionadas</h2>
+                        <div class="caixa">
+            <a href="https://vcx.solutions/smart-city/">
+                <div class="imagem">
+                    <picture class="attachment-medium_large size-medium_large wp-post-image" decoding="async">
+<source type="image/webp" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-768x450.jpg.webp 768w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-300x176.jpg.webp 300w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-1024x600.jpg.webp 1024w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-150x88.jpg.webp 150w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City.jpg.webp 1450w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20768%20450&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 768px) 100vw, 768px"/>
+<img width="768" height="450" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20768%20450&#039;%3E%3C/svg%3E" alt="O que é uma smart city?" decoding="async" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-768x450.jpg 768w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-300x176.jpg 300w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-1024x600.jpg 1024w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-150x88.jpg 150w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City.jpg 1450w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-lazy-src="https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-768x450.jpg"/>
+</picture>
+<noscript><picture class="attachment-medium_large size-medium_large wp-post-image" decoding="async">
+<source type="image/webp" srcset="https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-768x450.jpg.webp 768w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-300x176.jpg.webp 300w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-1024x600.jpg.webp 1024w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-150x88.jpg.webp 150w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City.jpg.webp 1450w" sizes="(max-width: 768px) 100vw, 768px"/>
+<img width="768" height="450" src="https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-768x450.jpg" alt="O que é uma smart city?" decoding="async" srcset="https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-768x450.jpg 768w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-300x176.jpg 300w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-1024x600.jpg 1024w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City-150x88.jpg 150w, https://vcx.solutions/wp-content/uploads/2024/03/O-que-e-uma-Smart-City.jpg 1450w" sizes="(max-width: 768px) 100vw, 768px"/>
+</picture>
+</noscript>                    <div class="filtro"></div>
+                </div>
+                <div class="texto">
+                                        <h3>O que é uma smart city?</h3>
+                    <p>Na era da transformação digital, as cidades estão evoluindo de forma significativa para se tornarem mais inteligentes, eficientes [&hellip;]</p>
+                    <p class="autor">Por <span>VC-X Solutions</span> <b>| 07.03.2024</b></p>
+                </div>
+                <div class="clear"></div>
+            </a>
+            </div>
+                        <div class="caixa">
+            <a href="https://vcx.solutions/fibra-optica/">
+                <div class="imagem">
+                    <picture class="attachment-medium_large size-medium_large wp-post-image" decoding="async">
+<source type="image/webp" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-768x450.jpg.webp 768w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-300x176.jpg.webp 300w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-1024x600.jpg.webp 1024w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-150x88.jpg.webp 150w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica.jpg.webp 1450w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20768%20450&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 768px) 100vw, 768px"/>
+<img width="768" height="450" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20768%20450&#039;%3E%3C/svg%3E" alt="Ilustração com o título O que é fibra óptica?" decoding="async" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-768x450.jpg 768w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-300x176.jpg 300w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-1024x600.jpg 1024w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-150x88.jpg 150w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica.jpg 1450w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-lazy-src="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-768x450.jpg"/>
+</picture>
+<noscript><picture class="attachment-medium_large size-medium_large wp-post-image" decoding="async">
+<source type="image/webp" srcset="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-768x450.jpg.webp 768w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-300x176.jpg.webp 300w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-1024x600.jpg.webp 1024w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-150x88.jpg.webp 150w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica.jpg.webp 1450w" sizes="(max-width: 768px) 100vw, 768px"/>
+<img width="768" height="450" src="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-768x450.jpg" alt="Ilustração com o título O que é fibra óptica?" decoding="async" srcset="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-768x450.jpg 768w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-300x176.jpg 300w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-1024x600.jpg 1024w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica-150x88.jpg 150w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-fibra-optica.jpg 1450w" sizes="(max-width: 768px) 100vw, 768px"/>
+</picture>
+</noscript>                    <div class="filtro"></div>
+                </div>
+                <div class="texto">
+                                        <h3>O que é fibra óptica?</h3>
+                    <p>Nos dias de hoje, é quase impossível imaginar um mundo sem a presença da internet e das comunicações [&hellip;]</p>
+                    <p class="autor">Por <span>VC-X Solutions</span> <b>| 29.02.2024</b></p>
+                </div>
+                <div class="clear"></div>
+            </a>
+            </div>
+                        <div class="caixa">
+            <a href="https://vcx.solutions/edge-computing/">
+                <div class="imagem">
+                    <picture class="attachment-medium_large size-medium_large wp-post-image" decoding="async">
+<source type="image/webp" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-768x450.jpg.webp 768w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-300x176.jpg.webp 300w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-1024x600.jpg.webp 1024w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-150x88.jpg.webp 150w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing.jpg.webp 1450w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20768%20450&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 768px) 100vw, 768px"/>
+<img width="768" height="450" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20768%20450&#039;%3E%3C/svg%3E" alt="Ilustração com a frase &quot;O que é edge computing?&quot;" decoding="async" data-lazy-srcset="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-768x450.jpg 768w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-300x176.jpg 300w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-1024x600.jpg 1024w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-150x88.jpg 150w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing.jpg 1450w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-lazy-src="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-768x450.jpg"/>
+</picture>
+<noscript><picture class="attachment-medium_large size-medium_large wp-post-image" decoding="async">
+<source type="image/webp" srcset="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-768x450.jpg.webp 768w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-300x176.jpg.webp 300w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-1024x600.jpg.webp 1024w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-150x88.jpg.webp 150w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing.jpg.webp 1450w" sizes="(max-width: 768px) 100vw, 768px"/>
+<img width="768" height="450" src="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-768x450.jpg" alt="Ilustração com a frase &quot;O que é edge computing?&quot;" decoding="async" srcset="https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-768x450.jpg 768w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-300x176.jpg 300w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-1024x600.jpg 1024w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing-150x88.jpg 150w, https://vcx.solutions/wp-content/uploads/2024/02/O-que-e-edge-computing.jpg 1450w" sizes="(max-width: 768px) 100vw, 768px"/>
+</picture>
+</noscript>                    <div class="filtro"></div>
+                </div>
+                <div class="texto">
+                                        <h3>O que é edge computing?</h3>
+                    <p>O que é edge computing Edge computing – computação na borda, em português – é uma tecnologia emergente [&hellip;]</p>
+                    <p class="autor">Por <span>VC-X Solutions</span> <b>| 01.02.2024</b></p>
+                </div>
+                <div class="clear"></div>
+            </a>
+            </div>
+                        <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</section>
+
+<script type="rocketlazyloadscript">
+window.onscroll = function(){
+    scrollFunction()
+};
+function scrollFunction(){
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 114;
+    document.getElementById("progress-bar").style.width = scrolled + "%";
+}
+</script>
+
+<footer>
+    <div class="container">
+        <div class="newsletter">
+                        <p>Receba os conteúdos da VC-X</p>
+            <p>Diversos materiais e dicas dos nossos especialistas para auxiliar na sua gestão de Telecom e TI</p>
+            <div class="formulario">
+                <div class='_form_45'></div><script type="rocketlazyloadscript" data-rocket-type='text/javascript' data-rocket-src='https://vcx186.activehosted.com/f/embed.php?static=0&id=45&65F09A6D0172C&nostyles=1&preview=0' defer></script>                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <p>Ao assinar você concorda automaticamente com a nossa <a href="https://vcx.solutions/politica-de-privacidade/">política de privacidade</a></p>
+                        <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="logo">
+            <a href="https://vcx.solutions/">
+                <img width="127" height="48" class="vcx" alt="Logo VC-X" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20127%2048'%3E%3C/svg%3E" data-lazy-src="https://vcx.solutions/wp-content/uploads/2021/08/vc-x-logo-footer.svg" /><noscript><img width="127" height="48" class="vcx" alt="Logo VC-X" src="https://vcx.solutions/wp-content/uploads/2021/08/vc-x-logo-footer.svg" /></noscript>
+            </a>
+            <div class="selos">
+                <img width="121" height="65" class="selo" alt="Selo Acate" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20121%2065'%3E%3C/svg%3E" data-lazy-src="https://vcx.solutions/wp-content/uploads/2022/03/selo-startup-associada-2021-branco.svg" /><noscript><img width="121" height="65" class="selo" alt="Selo Acate" src="https://vcx.solutions/wp-content/uploads/2022/03/selo-startup-associada-2021-branco.svg" /></noscript>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="menu">
+        <ul>
+                        <li><a href="https://vcx.solutions/sonar">Sonar</a></li>
+                        <li><a href="https://vcx.solutions/planos/">Planos</a></li>
+                        <li><a href="https://vcx.solutions/cases/">Cases</a></li>
+                        <li><a href="https://vcx.solutions/sobre">Sobre</a></li>
+                        <li><a href="https://vcx.solutions/contato/">Contato</a></li>
+                        <li><a href="https://app.vcx.solutions/entrar/">Login</a></li>
+                    </ul>
+        </div>
+        <div class="conteudos">
+        <ul>
+                        <li><a href="https://vcx.solutions/blog/">Conteúdos</a></li>
+                        <li><a href="https://vcx.solutions/blog/">Blog</a></li>
+                        <li><a href="https://vcx.solutions/materiais-ricos/">Materiais ricos</a></li>
+                        <li><a href="https://vcx.solutions/webstories/">Web Stories</a></li>
+                    </ul>
+        </div>
+        <div class="telefones">
+        <ul>
+                        <li><span>Florianópolis</span><a href="tel:+554833310400">48 3331-0400</a></li>
+                        <li><span>São Paulo</span><a href="tel:+551147656770">11 4765-6770</a></li>
+                        <li><span>Rio de Janeiro</span><a href="tel:+552120422268">21 2042-2268</a></li>
+                        <li><span>Porto Alegre</span><a href="tel:+555131031000">51 3103-1000</a></li>
+                        <li><span>Curitiba</span><a href="tel:+554135128353">41 3512-8353</a></li>
+                    </ul>
+        </div>
+        <div class="contato">
+                        <p><img width="18" height="14" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2018%2014'%3E%3C/svg%3E" alt="Ícone email" data-lazy-src="https://vcx.solutions/wp-content/themes/vcx/img/mail.svg" /><noscript><img width="18" height="14" src="https://vcx.solutions/wp-content/themes/vcx/img/mail.svg" alt="Ícone email" /></noscript><a target="_blank" rel="noopener" href="mailto:contato@vcx.solutions">contato@vcx.solutions</a></p>
+            <p>R. Felipe Schmidt, 835<br />
+Salas 12 e 13<br />
+CIA ACATE Downtown<br />
+Centro – Florianópolis/SC<br />
+Cep: 88010-001</p>
+                        <div class="social">
+                                <a target="_blank" rel="noopener" href="https://www.youtube.com/c/VCXSolutions"><img width="20" height="14" alt="Rede social - https://www.youtube.com/c/VCXSolutions" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2020%2014'%3E%3C/svg%3E" data-lazy-src="https://vcx.solutions/wp-content/uploads/2021/08/youtube.svg" /><noscript><img width="20" height="14" alt="Rede social - https://www.youtube.com/c/VCXSolutions" src="https://vcx.solutions/wp-content/uploads/2021/08/youtube.svg" /></noscript></a>
+                                <a target="_blank" rel="noopener" href="https://www.linkedin.com/company/vcxsolutions"><img width="15" height="14" alt="Rede social - https://www.linkedin.com/company/vcxsolutions" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2015%2014'%3E%3C/svg%3E" data-lazy-src="https://vcx.solutions/wp-content/uploads/2021/08/linkedin.svg" /><noscript><img width="15" height="14" alt="Rede social - https://www.linkedin.com/company/vcxsolutions" src="https://vcx.solutions/wp-content/uploads/2021/08/linkedin.svg" /></noscript></a>
+                                <a target="_blank" rel="noopener" href="https://www.instagram.com/vcx.solutions/"><img width="17" height="17" alt="Rede social - https://www.instagram.com/vcx.solutions/" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2017%2017'%3E%3C/svg%3E" data-lazy-src="https://vcx.solutions/wp-content/uploads/2021/08/instagram.svg" /><noscript><img width="17" height="17" alt="Rede social - https://www.instagram.com/vcx.solutions/" src="https://vcx.solutions/wp-content/uploads/2021/08/instagram.svg" /></noscript></a>
+                                <a target="_blank" rel="noopener" href="https://www.facebook.com/vcx.solutions"><img width="9" height="17" alt="Rede social - https://www.facebook.com/vcx.solutions" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%209%2017'%3E%3C/svg%3E" data-lazy-src="https://vcx.solutions/wp-content/uploads/2021/08/facebook.svg" /><noscript><img width="9" height="17" alt="Rede social - https://www.facebook.com/vcx.solutions" src="https://vcx.solutions/wp-content/uploads/2021/08/facebook.svg" /></noscript></a>
+                            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="politicas">
+                <a href="https://vcx.solutions/politica-de-privacidade/">Política de privacidade</a>
+            </div>
+</footer>
+<div class="wid">
+    <div class="container">
+        <a target="_blank" rel="noopener" href="https://www.wid.studio/?utm_source=vc-x&utm_medium=footer">wid.studio</a>
+    </div>
+</div>
+
+<script type="text/javascript" id="site_tracking-js-extra">
+/* <![CDATA[ */
+var php_data = {"ac_settings":{"tracking_actid":69019202,"site_tracking_default":1},"user_email":""};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-content/plugins/activecampaign-subscription-forms/site_tracking.js" id="site_tracking-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-content/plugins/beautiful-and-responsive-cookie-consent/public/cookieNSCconsent.min.js?ver=3.3.1" id="nsc_bar_nice-cookie-consent_js-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="nsc_bar_nice-cookie-consent_js-js-after">
+/* <![CDATA[ */
+window.addEventListener("load",function(){window.cookieconsent.initialise({
+    "content": {
+        "deny": "Negar",
+        "dismiss": "Aceitar todos os cookies",
+        "allow": "Permitir",
+        "link": "Ler a Política de Privacidade",
+        "href": "https:\/\/vcx.solutions\/politica-de-privacidade\/",
+        "message": "Nós utilizamos cookies e outras tecnologias semelhantes para melhorar a sua experiência em nossos serviços, personalizar publicidade e recomendar conteúdo de acordo com o seu interesse. Ao utilizar nossos serviços, você concorda com tal monitoramento.",
+        "policy": "Cookie Settings",
+        "savesettings": "Salvar configurações",
+        "target": "_blank",
+        "linksecond": "Just another Link",
+        "hrefsecond": "https:\/\/yourdomain\/anotherLink"
+    },
+    "type": "info",
+    "palette": {
+        "popup": {
+            "background": "#F2F2F2",
+            "text": "#282837"
+        },
+        "button": {
+            "background": "#4253A0",
+            "text": "#FFF",
+            "border": ""
+        },
+        "switches": {
+            "background": "",
+            "backgroundChecked": "",
+            "switch": "",
+            "text": ""
+        }
+    },
+    "position": "bottom",
+    "theme": "classic",
+    "cookietypes": [
+        {
+            "label": "Technical",
+            "checked": "checked",
+            "disabled": "disabled",
+            "cookie_suffix": "tech"
+        },
+        {
+            "label": "Marketing",
+            "checked": "",
+            "disabled": "",
+            "cookie_suffix": "marketing"
+        }
+    ],
+    "revokable": "0",
+    "container": "",
+    "customizedFont": "",
+    "dataLayerName": "dataLayer",
+    "improveBannerLoadingSpeed": "0"
+})});
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-content/plugins/duracelltomi-google-tag-manager/dist/js/gtm4wp-contact-form-7-tracker.js?ver=1.20" id="gtm4wp-contact-form-7-tracker-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+/* <![CDATA[ */
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+/* ]]> */
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index.php\/)?(.*)wp-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/vcx.solutions","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+/* <![CDATA[ */
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-content/themes/vcx/js/jquery.fancybox.min.js?ver=0.1" id="fancybox-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-content/themes/vcx/js/slick.min.js?ver=0.1" id="slick-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-content/themes/vcx/js/script.js?ver=0.2" id="script-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.google.com/recaptcha/api.js?render=6LemAYUcAAAAAFSNQSZCDR6eSl3CRw23Q-w25h9G&amp;ver=3.0" id="google-recaptcha-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2" id="wp-polyfill-inert-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.14.0" id="regenerator-runtime-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script type="text/javascript" id="wpcf7-recaptcha-js-extra">
+/* <![CDATA[ */
+var wpcf7_recaptcha = {"sitekey":"6LemAYUcAAAAAFSNQSZCDR6eSl3CRw23Q-w25h9G","actions":{"homepage":"homepage","contactform":"contactform"}};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-content/plugins/contact-form-7/modules/recaptcha/index.js?ver=5.8.7" id="wpcf7-recaptcha-js" defer></script>
+<script type="text/javascript" id="ivory-search-scripts-js-extra">
+/* <![CDATA[ */
+var IvorySearchVars = {"is_analytics_enabled":"1"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://vcx.solutions/wp-content/plugins/add-search-to-menu/public/js/ivory-search.min.js?ver=5.5.4" id="ivory-search-scripts-js" defer></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://vcx.solutions/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script><script>function lazyLoadThumb(e,alt){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';t=t.replace('alt=""','alt="'+alt+'"');return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id,a[t].dataset.alt),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script><script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+    (function(e,t,o,n,p,r,i){e.visitorGlobalObjectAlias=n;e[e.visitorGlobalObjectAlias]=e[e.visitorGlobalObjectAlias]||function(){(e[e.visitorGlobalObjectAlias].q=e[e.visitorGlobalObjectAlias].q||[]).push(arguments)};e[e.visitorGlobalObjectAlias].l=(new Date).getTime();r=t.createElement("script");r.src=o;r.async=true;i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)})(window,document,"https://diffuser-cdn.app-us1.com/diffuser/diffuser.js","vgo");
+    vgo('setAccount', '69019202');
+    vgo('setTrackByDefault', true);
+    vgo('process');
+</script>
+
+</body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1710266989 -->
